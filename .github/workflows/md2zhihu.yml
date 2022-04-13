@@ -1,0 +1,21 @@
+# This is a basic workflow to help you get started with Actions
+
+name: md2zhihu
+
+# Controls when the workflow will run
+on: [push]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  md2zhihu:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: drmingdrmer/md2zhihu@latest
+      env:
+        GITHUB_USERNAME: ${{ github.repository_owner }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        pattern: >
+            _posts/*.md
+            _posts/*.markdown
